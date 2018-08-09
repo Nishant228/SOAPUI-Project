@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="dd190246-9e3a-4f31-8463-8b6cc2b48eac" activeEnvironment="Default" name="ServiceAutomation" resourceRoot="" soapui-version="5.4.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:testSuite id="78a8b6f2-becf-4e11-87f7-8ecee681dd97" name="Library"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="f41d57f2-a252-4bb4-aebf-86faf64209c4" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="ReusableScript" searchProperties="true"><con:settings/><con:testStep type="groovy" name="ReusableLib" id="8e1f9bf7-4401-41de-b85b-969215c19c11"><con:settings/><con:config><script>class Testing
+{
+	def log
+	def context
+	def testRunner
+
+	def Testing(log, context, testRunner)
+	{
+		this.log=log
+		this.context=context
+		this.testRunner=testRunner
+	}
+
+	def displayMessage()
+	{
+		log.info "This is display message"
+	}
+
+	def sum(def a, def b)
+	{
+		def c=a+b
+		log.info c
+	}	
+}
+
+context.setProperty("obj", new Testing(log, context, testRunner))
+
+</script></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:testSuite id="1cc11f69-90a9-492e-9129-e632fc9d3789" name="AutomationSuite1"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="5f18f38b-5cfb-44b2-b208-6eedfcb02820" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Case1" searchProperties="true"><con:settings/><con:testStep type="groovy" name="Step1" id="a9dddc4e-8039-4e01-bcb0-7a91bb5d7f64"><con:settings/><con:config><script>def suiteRef = testRunner.testCase.testSuite.project.testSuites["Library"].testCases["ReusableScript"].testSteps["ReusableLib"]
+suiteRef.run(testRunner, context)
+def myobj = context.obj
+myobj.displayMessage()
+myobj.sum(10,20)</script></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>

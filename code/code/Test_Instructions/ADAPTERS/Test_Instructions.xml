@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestSuite>
+   <TestCase execution="Y" name="Functional_10.9.0_SOA_UNLRN_ADP_TC14">
+      <TCID></TCID>
+      <Smoke>N</Smoke>
+      <Sanity>N</Sanity>
+      <Regression>Y</Regression>
+      <SupFlow>N</SupFlow>
+      <Customer>PAT_TST</Customer>
+      <Adapter>UNIVERSAL LRN CHANGE</Adapter>
+      <InputXmlType>SV_Disconnect_SVT_Type</InputXmlType>
+      <ExpectedResponsesValidationinAdapterDB>new</ExpectedResponsesValidationinAdapterDB>
+      <ExpectedEventCodesinBPELDB></ExpectedEventCodesinBPELDB>
+      <PreRequisite>ADAPTER_DB|start|DELETE from SOA_ESR_TN where TN='703-577-1231' and CUSTOMER=$Customer</PreRequisite>
+      <XMLValidationInDB>ADAPTER_DB|SELECT SYNC_RESPONSE from SOA_ESR_ORDER_MESSAGE where OrderId=$ORDERID|//SOAM/MSGC/STNP/MESG/NCRQ/SVTY{NotExist}</XMLValidationInDB>
+      <SpecificValidation></SpecificValidation>
+      <RemoveTagValueFromAdapterXml></RemoveTagValueFromAdapterXml>
+      <RemoveTagNameFromAdapterXml></RemoveTagNameFromAdapterXml>
+      <ExecuteScript></ExecuteScript>
+      <ReplaceTagValueInXml></ReplaceTagValueInXml>
+      <PostRequisite></PostRequisite>
+   </TestCase>
+</TestSuite>
